@@ -5,14 +5,21 @@
  */
 package controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.JFrame;
+import view.Login;
+import view.Login;
+
 /**
  *
  * @author kelsey
  */
 public class EmployeeApp {
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
-        AccessUser a1 = new AccessUser("/test.txt", "test.txt");
-        //a1.getEmployees();
+        Login newLogin = new Login();
+        newLogin.setVisible(true);
     }
 }

@@ -9,57 +9,28 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
  * @author kelsey
  */
 public class AccessUser {
-    private String employeeFileTxt;
-    private String userFileTxt;
-
-    public AccessUser(String employeeFile, String userFile) {
-        this.employeeFileTxt = employeeFile;
-        this.userFileTxt = userFile;
-    }
-    
-    ArrayList<User> getEmployees() throws IOException
+   
+    public static ArrayList<User> getEmployees(String employeeFile) throws IOException
     {
-        File employeeFile;
-        Path employeePath = Paths.get(employeeFileTxt);
-        if (Files.exists(employeePath))
-        {
-            employeeFile = employeePath.toFile();
-            try (BufferedReader in = new BufferedReader(
-                                     new FileReader(employeeFile))) {
-                String line = in.readLine();
-                ArrayList<String> lineArray = new ArrayList<>();
-                while(line != null) 
-                {
-                    
-                    lineArray.toArray(line.split(";"));
-                    System.out.println(lineArray.get(0));
-                    
-                } 
-            } catch (IOException e)
-            {
-                System.out.println(e);     
-            }
-        }
-        else
-        {
-            System.out.println("No such file exists! Creating file.");
-            Files.createFile(employeePath);
-        }
+        ArrayList<String> employees = LoadFile.getList(employeeFile);
         ArrayList<User> users = new ArrayList<>();
-        
+        for (String e : employees)
+        {
+            String[] employ = e.split(";");
+            users.add(new User(employ[0], employ[1], Integer.parseInt(employ[2]), Integer.parseInt(employ[3]), Integer.parseInt(employ[4])));
+        }
         return users;
-        
     }
     
 }

@@ -23,8 +23,13 @@ public class User {
         this.accessLevel = accessLevel;
         this.lastFour = lastFour;
     }
-    
-    
+    @Override
+    public String toString()
+    {
+        String result = "";
+        result += (int)UID + ": " + firstName + " " + lastName;
+        return result;
+    }
     /**
      * @return the firstName
      */
