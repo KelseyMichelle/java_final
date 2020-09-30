@@ -1,4 +1,4 @@
-Final Project for CSi 254 - Java I
+Final Project for CSi 254
 
 Employee Database Program
 Author: Kelsey Gregware
